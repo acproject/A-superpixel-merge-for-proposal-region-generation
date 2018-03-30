@@ -4,4 +4,4 @@ A demo of learning a gitskill.
 Creating a new branch is quick.
 "hello git"  
 Creating a new branch is quick and simple.
-git branch dev
+git branch dev"hello stash"  
