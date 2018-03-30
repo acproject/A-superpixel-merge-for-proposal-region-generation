@@ -6,3 +6,4 @@ Creating a new branch is quick.
 =======
 "Good git" 
 >>>>>>> dev
+Creating a new branch is quick & simple.
