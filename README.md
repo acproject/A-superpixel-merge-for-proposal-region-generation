@@ -1,5 +1,5 @@
 # gitskills
-A demo of learning gitskills
+A demo of learning a gitskill.
 <<<<<<< HEAD
 Creating a new branch is quick.
 "hello git"  
