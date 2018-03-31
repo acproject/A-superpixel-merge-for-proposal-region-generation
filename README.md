@@ -1,7 +1,1 @@
-# gitskills
-A demo of learning a gitskill.
-<<<<<<< HEAD
-Creating a new branch is quick.
-"hello git"  
-Creating a new branch is quick and simple.
-git branch dev"hello stash"  
+This is a superpixel merge example for generating proposal region.In this demo, it uses SLIC superpixel method to segment image into number of sub_region. Then,the two unsupervised merging strategies are adopted to achieve region merging, and ultimately achieve the purpose of extracting the object proposal region.
