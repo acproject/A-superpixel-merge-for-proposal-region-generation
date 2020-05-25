@@ -15,7 +15,7 @@ import copy
 if __name__ == '__main__':
 
     print('start coding .............')
-    rgb = cv2.imread('.\images\persons.png')
+    rgb = cv2.imread('.\images\3.png')
     # numSegments --initial superpixel num 
     # Patch_size ---image nomalizational patch size of computing adjacent region
     # Knum -- popasal region num
@@ -42,7 +42,7 @@ if __name__ == '__main__':
     cv2.imshow('rgb1', rgb1)
     cv2.imshow('rgb2', rgb2)
     cv2.waitKey(0)
-    cv2.imwrite('./results/original.png', rgb)
-    cv2.imwrite('./results/original_superpixel.png', rgb1)
-    cv2.imwrite('./results/merge.png', rgb2)        
+    cv2.imwrite('./results/original3.png', rgb)
+    cv2.imwrite('./results/original3_superpixel.png', rgb1)
+    cv2.imwrite('./results/merge3.png', rgb2)
     

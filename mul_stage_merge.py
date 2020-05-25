@@ -12,7 +12,7 @@ import RPG.multi_stage_merge as multi_stage_merge
 ###########################start coding###########################
 if __name__ == '__main__':
 
-    rgb = cv2.imread('.\images\persons.png')
+    rgb = cv2.imread('.\images\3.png')
     
     
     MT_merge = multi_stage_merge.multistage_merge(numSegments = 40, Patch_size = 32, K_num = 2)
@@ -40,5 +40,5 @@ if __name__ == '__main__':
         x,y,w,h = rects_copy[j]
         rgb_rect_copy = cv2.rectangle(rgb_rect_copy,(x,y),(x+w,y+h),(0,255,0),2)
 
-    cv2.imwrite('mul_stage_merge/rgb_contours_copy.png', rgb_contours_copy)
-    cv2.imwrite('mul_stage_merge/rgb_rect_copy.png', rgb_rect_copy)
+    cv2.imwrite('mul_stage_merge/3_rgb_contours_copy.png', rgb_contours_copy)
+    cv2.imwrite('mul_stage_merge/3_rgb_rect_copy.png', rgb_rect_copy)
