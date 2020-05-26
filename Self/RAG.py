@@ -43,22 +43,24 @@ def merge_mean_color(graph, src ,dst):
     graph.nodes[dst]['pixel count'] += graph.nodes[src]['pixel count']
     graph.nodes[dst]['mean color'] = (graph.nodes[dst]['total color'] / graph.nodes[dst]['pixel count'])
 
-img = Image.open('../images/3.png')
+img = Image.open('../images/6.png')
 img = img.convert("RGB")
 
 img = np.array(img)
-print(img)
-print("img:", img.shape)
+# print(img)
+# print("img:", img.shape)
 # print("img:", type(img))
 
 
-labels = segmentation.slic(img, compactness=30, n_segments=1200)
-g = graph.rag_mean_color(img, labels)
-
-labels2 = graph.merge_hierarchical(labels,g, thresh=35, rag_copy=False,
+labels = segmentation.slic(img, compactness=10, n_segments=1200)
+g = graph.rag_mean_color(img, labels, mode='distance')
+# print(g)
+labels2 = graph.merge_hierarchical(labels, g, thresh=35, rag_copy=False,
                                    in_place_merge=True, merge_func=merge_mean_color,
                                    weight_func=_weight_mean_color)
-out = color.label2rgb(labels2, img, kind='avg', bg_label=0)
-out = segmentation.mark_boundaries(out, labels2, (0,0,0))
-io.imshow(out)
+out = color.label2rgb(labels2, img, kind='overlay', bg_label=2)
+out2 = color.label2rgb(labels2, img, kind='overlay', bg_label=2)
+out = segmentation.mark_boundaries(out, labels2, (0, 0, 0))
+# print(out)
+io.imshow(labels2)
 io.show()

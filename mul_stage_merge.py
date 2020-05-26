@@ -9,15 +9,17 @@ Created on Sat Jan 20 16:11:39 2018
 import cv2
 import copy
 import RPG.multi_stage_merge as multi_stage_merge
+from PIL import Image
 ###########################start coding###########################
 if __name__ == '__main__':
 
-    rgb = cv2.imread('.\images\3.png')
-    
+    rgb = (Image.open('./images/3.png').convert("RGB"))
+    # print(rgb)
     
     MT_merge = multi_stage_merge.multistage_merge(numSegments = 40, Patch_size = 32, K_num = 2)
     
     superpixels = MT_merge.rgb2superpixel(rgb, 40)
+    # print(superpixels)
     contours = MT_merge.superpixels2contours(superpixels)
     rgb_contours_copy0 = copy.deepcopy(rgb)
     for j in range(len(contours)):

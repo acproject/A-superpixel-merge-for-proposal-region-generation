@@ -39,10 +39,13 @@ class multistage_merge(object):
         sum_contours = []
         for index in range(len(values)):
             L3 = np.zeros(superpixels.shape, np.uint8)
+            print(L3)
             L3[np.where(superpixels==values[index])] = 1
             # extract cotours
-            ret,thresh = cv2.threshold(L3, 0, 1, 0)
-            image, contours, hierarchy = cv2.findContours(L3, cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+            ret, thresh = cv2.threshold(L3, 0, 1, 0)
+            # print(ret)
+            # print(thresh)
+            image, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
             
             sum_contours.append(contours)
         return sum_contours

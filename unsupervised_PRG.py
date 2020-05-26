@@ -9,13 +9,13 @@ import RPG.Region_Proposal as region_proposal
 import numpy as np
 import cv2
 import copy
-
+from PIL import Image
 ###########################start coding###########################
 
 if __name__ == '__main__':
 
     print('start coding .............')
-    rgb = cv2.imread('.\images\3.png')
+    rgb = Image.open('./images/3.png').convert("RGB")
     # numSegments --initial superpixel num 
     # Patch_size ---image nomalizational patch size of computing adjacent region
     # Knum -- popasal region num
