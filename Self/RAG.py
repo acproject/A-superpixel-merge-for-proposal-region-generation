@@ -3,6 +3,8 @@ from skimage.future import graph
 import numpy as np
 import cv2;
 from  PIL import Image;
+from matplotlib import pyplot as plt, colors
+
 
 def _weight_mean_color(graph, src, dst, n):
     ''':cvar
@@ -54,13 +56,15 @@ img = np.array(img)
 
 labels = segmentation.slic(img, compactness=10, n_segments=1200)
 g = graph.rag_mean_color(img, labels, mode='distance')
-# print(g)
+cmap = colors.ListedColormap(['#6599FF', '#ff9900'])
+graph.show_rag(labels, g, img, img_cmap=cmap)
+
 labels2 = graph.merge_hierarchical(labels, g, thresh=35, rag_copy=False,
                                    in_place_merge=True, merge_func=merge_mean_color,
                                    weight_func=_weight_mean_color)
-out = color.label2rgb(labels2, img, kind='overlay', bg_label=2)
-out2 = color.label2rgb(labels2, img, kind='overlay', bg_label=2)
+out = color.label2rgb(labels2, img, kind='overlay', bg_label=0)
+# out2 = color.label2rgb(labels2, img, kind='overlay', bg_label=2)
 out = segmentation.mark_boundaries(out, labels2, (0, 0, 0))
 # print(out)
-io.imshow(labels2)
+io.imshow(out)
 io.show()
