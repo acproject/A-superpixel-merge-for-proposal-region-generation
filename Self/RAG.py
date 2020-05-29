@@ -1,5 +1,6 @@
 from skimage import data, io, segmentation, color
 from skimage.future import graph
+from skimage.measure import regionprops
 import numpy as np
 import cv2;
 from  PIL import Image;
@@ -45,7 +46,7 @@ def merge_mean_color(graph, src ,dst):
     graph.nodes[dst]['pixel count'] += graph.nodes[src]['pixel count']
     graph.nodes[dst]['mean color'] = (graph.nodes[dst]['total color'] / graph.nodes[dst]['pixel count'])
 
-img = Image.open('../images/6.png')
+img = Image.open('../images/12.png')
 img = img.convert("RGB")
 
 img = np.array(img)
@@ -57,14 +58,14 @@ img = np.array(img)
 labels = segmentation.slic(img, compactness=10, n_segments=1200)
 g = graph.rag_mean_color(img, labels, mode='distance')
 cmap = colors.ListedColormap(['#6599FF', '#ff9900'])
-graph.show_rag(labels, g, img, img_cmap=cmap)
+# graph.show_rag(labels, g, img, img_cmap=cmap)
 
-labels2 = graph.merge_hierarchical(labels, g, thresh=35, rag_copy=False,
+labels2 = graph.merge_hierarchical(labels, g, thresh=30, rag_copy=False,
                                    in_place_merge=True, merge_func=merge_mean_color,
                                    weight_func=_weight_mean_color)
-out = color.label2rgb(labels2, img, kind='overlay', bg_label=0)
+out = color.label2rgb(labels2, img, kind='overlay', bg_label=255)
 # out2 = color.label2rgb(labels2, img, kind='overlay', bg_label=2)
 out = segmentation.mark_boundaries(out, labels2, (0, 0, 0))
-# print(out)
+
 io.imshow(out)
 io.show()
